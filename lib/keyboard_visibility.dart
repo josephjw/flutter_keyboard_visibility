@@ -22,7 +22,7 @@ class KeyboardVisibilitySubscriber {
 /// The notification class that handles all information
 class KeyboardVisibilityNotification {
   static const EventChannel _keyboardVisibilityStream =
-  const EventChannel('github.com/adee42/flutter_keyboard_visibility');
+  const EventChannel('github.com/josephjw/flutter_keyboard_visibility');
   static Map<int, KeyboardVisibilitySubscriber> _list =
   Map<int, KeyboardVisibilitySubscriber>();
   static late StreamSubscription? _keyboardVisibilitySubscription;
