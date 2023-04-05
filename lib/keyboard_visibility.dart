@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'dart:async';
 
+
 /// A base class to handle the subscribing events
 class KeyboardVisibilitySubscriber {
   /// Called when a keyboard visibility event occurs
@@ -15,16 +16,16 @@ class KeyboardVisibilitySubscriber {
   final Function onHide;
 
   /// Constructs a new [KeyboardVisibilitySubscriber]
-  KeyboardVisibilitySubscriber({this.onChange, this.onShow, this.onHide});
+  KeyboardVisibilitySubscriber({required this.onChange, required this.onShow, required this.onHide});
 }
 
 /// The notification class that handles all information
 class KeyboardVisibilityNotification {
   static const EventChannel _keyboardVisibilityStream =
-      const EventChannel('github.com/adee42/flutter_keyboard_visibility');
+  const EventChannel('github.com/adee42/flutter_keyboard_visibility');
   static Map<int, KeyboardVisibilitySubscriber> _list =
-      Map<int, KeyboardVisibilitySubscriber>();
-  static StreamSubscription _keyboardVisibilitySubscription;
+  Map<int, KeyboardVisibilitySubscriber>();
+  static late StreamSubscription? _keyboardVisibilitySubscription;
   static int _currentIndex = 0;
 
   /// The current state of the keyboard visibility. Can be used without subscribing
@@ -63,7 +64,7 @@ class KeyboardVisibilityNotification {
   /// [onHide] is called when the keyboard disappears
   /// Returns a subscribing id that can be used to unsubscribe
   int addNewListener(
-      {Function(bool) onChange, Function onShow, Function onHide}) {
+      {required Function(bool) onChange, required Function onShow, required Function onHide}) {
     _list[_currentIndex] = KeyboardVisibilitySubscriber(
         onChange: onChange, onShow: onShow, onHide: onHide);
     return _currentIndex++;
@@ -83,9 +84,9 @@ class KeyboardVisibilityNotification {
   }
 
   /// Internal function to clear class on dispose
-  dispose() {
+  void dispose() {
     if (_list.length == 0) {
-      _keyboardVisibilitySubscription?.cancel()?.catchError((e) {});
+      _keyboardVisibilitySubscription?.cancel()?.catchError(() {});
       _keyboardVisibilitySubscription = null;
     }
   }

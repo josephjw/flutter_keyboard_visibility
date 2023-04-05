@@ -5,8 +5,7 @@ author: adee42 <42adee@gmail.com>
 homepage: https://github.com/adee42/flutter_keyboard_visibility/tree/master
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
-  flutter: ">=0.1.4 <2.0.0"
+  sdk: '>=2.18.5 <3.0.0'
 
 dependencies:
   flutter:
