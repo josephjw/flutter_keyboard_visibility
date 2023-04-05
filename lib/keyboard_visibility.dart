@@ -35,7 +35,7 @@ class KeyboardVisibilityNotification {
   ///
 
   init(){
-    _keyboardVisibilitySubscription ??= _keyboardVisibilityStream
+    _keyboardVisibilitySubscription = _keyboardVisibilityStream
         .receiveBroadcastStream()
         .listen(onKeyboardEvent);
   }
